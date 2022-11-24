@@ -25,3 +25,18 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Install AWS cli"
+        uses: unfor19/install-aws-cli-action@v1.0.4
+        with:
+          version: 2     # default
+          verbose: false # default
+          arch: amd64    # allowed values: amd64, arm64
+          rootdir: ""    # defaults to "PWD"
+          workdir: ""   
+      - run: aws --version
+        shell: bash
+      
+      
